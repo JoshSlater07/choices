@@ -207,7 +207,7 @@ handleChangeComplete = (color) => {
         
                 <div className="step">
                     { this.state.timelines.length === 0 && (
-                    <Fragment>
+                    <div className="timestamp">
                     <div className="step-inner">
                         <div className="step-circle-black"></div>
                         <div className="vertical-line"></div>
@@ -218,7 +218,7 @@ handleChangeComplete = (color) => {
                           </div>
                         </div>
                     </div>
-                    </Fragment>
+                    </div>
                     )}
                     <div className="step-content">
                     
@@ -230,6 +230,16 @@ handleChangeComplete = (color) => {
                   console.log("TIMELINE: ", this.state.timelines.length)
                     return (
                     <Fragment>
+                    <section className="task">
+
+                    { timeline.completed?( <>
+                      <div onDrop={(e)=>{this.drop(e,timeline._id,true)}} onDragOver={(ev)=>{this.allowDrop(ev)}} className="left-img-incomplete"></div>
+                    </>):(
+                      <>
+                      <div onDragStart={(e)=>{this.drag(e)}} className="left-img"><img draggable src={timeline.url} height="150" width="170"/></div>
+                    </>)}
+
+                    <div className="timestamp">                   
                     { id === 0 &&
                       <div className="step-circle-black"></div>
                     }
@@ -239,29 +249,33 @@ handleChangeComplete = (color) => {
                           <div className="step-circle">{timeline.time}</div>
                       </div>
                     </div>
+                    </div> 
                       
-                    {/* <div className="step-content">
-                    <button className = "deleteButton" onClick={() => this.deleteTimeline(timeline._id)}>Delete</button>
+                    {/* <div className="step-content"> */}
                     
-                    {timeline.completed?( <>
-                      <div onDrop={(e)=>{this.drop(e,timeline._id,true)}} onDragOver={(ev)=>{this.allowDrop(ev)}} className="left-img-incomplete"></div>
-                      <div onDragStart={(e)=>{this.drag(e)}}  className="right-img-complete"><img draggable src={timeline.url} height="150" width="170"/></div>
-                    </>):(
-                      <>
-                      <div onDragStart={(e)=>{this.drag(e)}} className="left-img"><img draggable src={timeline.url} height="150" width="170"/></div>
+                    
+                    { timeline.completed?(
+                      <section className="edit-task">
+                        <div onDragStart={(e)=>{this.drag(e)}}  className="right-img-complete"><img draggable src={timeline.url} height="150" width="170"/></div>
+                        <button className = "deleteButton" onClick={() => this.deleteTimeline(timeline._id)}>Delete</button>
+                      </section>
+                    ):(
+                      <section className="edit-task">
                       <div onDrop={(e)=>{this.drop(e,timeline._id)}} onDragOver={(ev)=>{this.allowDrop(ev)}} className="right-img"></div>
-                    </>)}
+                      <button className = "deleteButton" onClick={() => this.deleteTimeline(timeline._id)}>Delete</button>
+                      </section>
+                    )}
 
-                    </div> */}
-                    
+                    {/* </div> */}
+                    </section>
                     { id === this.state.timelines.length -1 && (
-                      <Fragment>
+                      <div className="timestamp">   
                         <div className="vertical-line"></div>
                         <div className="step" key={id}></div>
                         <div onClick={()=>{this.setState({modal:true})}} className="step-inner">
                           <div className="step-circle">+</div>
                         </div>
-                      </Fragment>
+                      </div>
                     )}
                     </Fragment>
                     )})}

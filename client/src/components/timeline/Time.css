@@ -67,7 +67,33 @@ text-align: center;
 
 
 }
-.timeline .hello-world {
+
+.task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+}
+
+.edit-task {
+  display: flex;
+  flex-direction: column;
+}
+
+.timestamp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.timeline .row, .stepper, .stepper-container, .task {
+  width: 100%;
+}
+
+.timeline .row {
  align-content: center;
  /* margin-left:-25%; */
  /* background: limegreen; */
@@ -79,13 +105,10 @@ text-align: center;
 }
 
 .left-img{
-  margin-left: -400px;
-  padding-bottom: 50px;
   width: 170px;
   height: 150px;
 }
 .left-img-incomplete{
-  margin-left: -400px;
   width: 170px;
   height: 150px;
   outline: 3px solid gray;
@@ -94,21 +117,15 @@ text-align: center;
 border: 2px solid red;
 padding:30px;
 width: 170px;
-margin-left: 175px;
-margin-top: -150px; 
-margin-bottom: 150px;
 height: 150px;
 }
 .right-img-complete{
   outline: 5px solid green;
   width: 170px;
   height: 150px;
-  margin-left: 175px;
-margin-top: -150px; 
-margin-bottom: 150px;
   }
+
 .left-img P {
-  margin-left: -300px;
   background: red;
   width: 120px;
   height: 100px;
@@ -126,8 +143,9 @@ margin-bottom: 150px;
   margin-bottom: 2em;
   /* margin-left: 25vw; */
   border-radius: 5em;
-  text-align: center;
-
+  
+  display: flex;
+  justify-content: center;
 }
 
 .stepper {
@@ -140,6 +158,8 @@ margin-bottom: 150px;
   flex-direction: row;
   align-items: baseline;
   width: 100%;
+  justify-content: center;
+
 }
 /* .step:after {
   content: '';
@@ -159,8 +179,6 @@ margin-bottom: 150px;
   top: -5px;
   background-color: #d8dce1;
 } */
-
-
 
 .step:last-child:after {
   display: none;
@@ -200,7 +218,15 @@ margin-bottom: 150px;
   align-items: center;
   
   font-size: 12px;
+  /* position: absolute;
+  bottom: 4.5em; */
 }
+
+/* .timestamp{
+  left: 0px;
+  background: peachpuff;
+} */
+
 .step-circle-black{
   height: 10px;
   width: 30px;
@@ -209,6 +235,7 @@ margin-bottom: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .vertical-line {
